@@ -15,9 +15,13 @@ Developed a Python script to analyze network traffic captured using Wireshark an
 2. **Python Script Setup:**
     - Developed a Python script to read the Wireshark file using the Scapy library.
     - Used GeoLite2 City database for IP geolocation.
+    - ![image](https://github.com/jeremymonk21/IPgeolocator/assets/153461563/91bf9ba9-7957-449d-9c56-86454b9c630c)
+
 3. **IP Geolocation Mapping:**
     - Implemented a function to map IP addresses to their geolocations using the GeoLite2 database.
     - Extracted source and destination IP addresses from the captured packets.
+    - 1![image](https://github.com/jeremymonk21/IPgeolocator/assets/153461563/a016d8a9-da8d-49d9-954d-d19d955924b3)
+
 4. **Visualization with Folium:**
     - Integrated Folium to create an interactive map.
     - Plotted markers on the map for each geolocated IP address.
