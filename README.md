@@ -122,6 +122,3 @@ Developed a Python script to analyze network traffic captured using Wireshark an
 - This project showcases practical skills in network analysis, data manipulation, and visualization using Python.
 - The interactive mapping tool contributes to understanding network communication patterns and can be further enhanced for real-world applications.
 
-### Conclusion:
-
-This project showcases my ability to leverage Python and relevant libraries to analyze and visualize network traffic, providing valuable insights into the geographical distribution of IP addresses. The interactive mapping tool serves as a useful resource for understanding network communication patterns.
