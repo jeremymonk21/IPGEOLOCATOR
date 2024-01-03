@@ -10,6 +10,7 @@ Developed a Python script to analyze network traffic captured using Wireshark an
     - Utilized Wireshark to capture network traffic and saved it in a pcap file.
   
     - ![image](https://github.com/jeremymonk21/IPgeolocator/assets/153461563/5d4cbf8a-4861-4637-8f75-ee25ea0c41a5)
+    - ![image](https://github.com/jeremymonk21/IPgeolocator/assets/153461563/753dd8b8-6725-4ebf-ae52-584d7c5bbe9b)
 
 2. **Python Script Setup:**
     - Developed a Python script to read the Wireshark file using the Scapy library.
@@ -27,6 +28,8 @@ Developed a Python script to analyze network traffic captured using Wireshark an
 7. **Map Analysis:**
     - Examined the map to identify the geolocations of IP addresses present in the network traffic.
     - Analyzed patterns, identified locations, and gained insights into the network communication.
+    - ![image](https://github.com/jeremymonk21/IPgeolocator/assets/153461563/85c42f70-3d80-489d-b17f-50c04190c3bb)
+
 
 ### Technologies Used:
 
