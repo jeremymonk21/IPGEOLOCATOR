@@ -1,0 +1,56 @@
+import scapy.all as scapy
+import geoip2.database
+import folium
+
+def get_coordinates(ip_address, geoip_reader):
+    try:
+        response = geoip_reader.city(ip_address)
+        latitude = response.location.latitude
+        longitude = response.location.longitude
+        return latitude, longitude
+    except geoip2.errors.AddressNotFoundError:
+        return None, None
+
+def map_ip_locations(packets, geoip_reader):
+    locations = []
+
+    for packet in packets:
+        if 'IP' in packet:
+            src_ip = packet['IP'].src
+            dst_ip = packet['IP'].dst
+
+            src_latitude, src_longitude = get_coordinates(src_ip, geoip_reader)
+            dst_latitude, dst_longitude = get_coordinates(dst_ip, geoip_reader)
+
+            if src_latitude is not None and src_longitude is not None:
+                locations.append(([src_latitude, src_longitude], src_ip))
+            if dst_latitude is not None and dst_longitude is not None:
+                locations.append(([dst_latitude, dst_longitude], dst_ip))
+
+    return locations
+
+def create_map(locations):
+    map_center = [0, 0]
+    my_map = folium.Map(location=map_center, zoom_start=2)
+
+    for location, ip_address in locations:
+        try:
+            folium.Marker(location, popup=ip_address).add_to(my_map)
+        except ValueError:
+            # Handle the case where location contains None values
+            pass
+
+    my_map.save("ip_map.html")
+    print("Map saved as ip_map.html")
+
+if __name__ == "__main__":
+    wireshark_file_path = "C:/Users/npbro\Desktop/everything/cybersecurity stuff/wireshark/dectest.pcap"
+    packets = scapy.rdpcap(wireshark_file_path)
+
+    geoip_reader = geoip2.database.Reader( "C:/Users/npbro/Desktop/everything/cybersecurity stuff/wireshark/GeoLite2-City_20231212/GeoLite2-City.mmdb")
+
+    ip_locations = map_ip_locations(packets, geoip_reader)
+    create_map(ip_locations)
+
+    geoip_reader.close()
+
